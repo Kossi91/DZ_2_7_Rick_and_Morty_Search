@@ -15,7 +15,7 @@
         android:theme="@style/Theme.DZ_2_7_Rick_and_Morty_Search"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.ui.activity.MainActivity"
+            android:name="com.example.presentation.ui.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

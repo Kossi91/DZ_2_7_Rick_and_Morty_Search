@@ -1,7 +1,6 @@
 plugins {
-    id(Plugins.application)
+    id(Plugins.library)
     kotlin(Plugins.android)
-
     // Kapt
     kotlin(Plugins.kapt)
 
@@ -13,17 +12,15 @@ plugins {
 }
 
 android {
-    namespace = "com.example.dz_2_7_rick_and_morty_search"
+    namespace = "com.example.presentation"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.dz_2_7_rick_and_morty_search"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -36,12 +33,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_9
-        targetCompatibility = JavaVersion.VERSION_1_9
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    // ViewBinding
+    buildFeatures.viewBinding = true
 }
 
 dependencies {
@@ -59,20 +58,33 @@ dependencies {
         implementation(constraintlayout)
     }
 
+    // Fragment
+    implementation(Dependencies.Fragment.fragment)
+
+    //Hilt
     Dependencies.Hilt.apply {
-        //Hilt
         implementation(hilt)
         implementation(legacy)
         implementation(lifecycle)
         kapt(hiltCompiler)
     }
 
-    //Data
-    implementation(project(":data"))
+    // Navigation
+    Dependencies.Navigation.apply {
+        implementation(navigation)
+        implementation(navigationUI)
+    }
+
+    // ViewBindingPropertyDelegate
+    implementation(Dependencies.Viewbinding.viewbinding)
+
+    // Glide
+    implementation(Dependencies.Glide.glide)
+    annotationProcessor(Dependencies.Glide.bumptech)
+
+    // Paging 3
+    implementation(Dependencies.Paging.paging)
 
     //Domain
     implementation(project(":domain"))
-
-    //Presentation
-    implementation(project(":presentation"))
 }

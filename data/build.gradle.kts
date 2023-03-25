@@ -1,7 +1,6 @@
 plugins {
-    id(Plugins.application)
+    id(Plugins.library)
     kotlin(Plugins.android)
-
     // Kapt
     kotlin(Plugins.kapt)
 
@@ -13,17 +12,15 @@ plugins {
 }
 
 android {
-    namespace = "com.example.dz_2_7_rick_and_morty_search"
+    namespace = "com.example.data"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.dz_2_7_rick_and_morty_search"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -36,8 +33,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_9
-        targetCompatibility = JavaVersion.VERSION_1_9
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -45,6 +42,7 @@ android {
 }
 
 dependencies {
+
     Dependencies.UIComponents.apply {
         // Core
         implementation(core)
@@ -59,6 +57,18 @@ dependencies {
         implementation(constraintlayout)
     }
 
+    Dependencies.Retrofit.apply {
+        // Retrofit
+        implementation(retrofit2)
+        implementation(gson)
+    }
+
+    Dependencies.OkHttp.apply {
+        // OkHttp Client
+        implementation(platform(okhttp3))
+        implementation(okhttp)
+        implementation(logging)
+    }
     Dependencies.Hilt.apply {
         //Hilt
         implementation(hilt)
@@ -67,12 +77,6 @@ dependencies {
         kapt(hiltCompiler)
     }
 
-    //Data
-    implementation(project(":data"))
-
     //Domain
     implementation(project(":domain"))
-
-    //Presentation
-    implementation(project(":presentation"))
 }

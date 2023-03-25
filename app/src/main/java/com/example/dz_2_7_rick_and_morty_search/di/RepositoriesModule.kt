@@ -1,7 +1,7 @@
 package com.example.dz_2_7_rick_and_morty_search.di
 
-import com.example.dz_2_7_rick_and_morty_search.data.repositories.RickAndMortyRepositoryImpl
-import com.example.dz_2_7_rick_and_morty_search.domain.repositories.RickAndMortyRepository
+import com.example.data.repositories.RickAndMortyRepositoryImpl
+import com.example.domain.repositories.RickAndMortyRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

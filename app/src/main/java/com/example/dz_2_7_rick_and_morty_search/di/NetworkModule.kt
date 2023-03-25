@@ -1,6 +1,6 @@
 package com.example.dz_2_7_rick_and_morty_search.di
 
-import com.example.dz_2_7_rick_and_morty_search.data.remote.RetrofitClient
+import com.example.data.remote.RetrofitClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
